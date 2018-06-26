@@ -35,6 +35,9 @@ typedef boost::shared_ptr<ServiceBase> Service_ptr;
 class ServicePort;
 typedef boost::shared_ptr<ServicePort> ServicePort_ptr;
 
+static constexpr int32_t CONNECTION_WRITE_TIMEOUT = 30;
+static constexpr int32_t CONNECTION_READ_TIMEOUT = 30;
+
 #ifdef __DEBUG_NET__
 #define PRINT_ASIO_ERROR(description) \
 	std::cout << "[Error - " << __FUNCTION__ << "] " << description << " - "
@@ -90,9 +93,7 @@ class ConnectionManager
 
 class Connection : public boost::enable_shared_from_this<Connection>, boost::noncopyable
 {
-	public:
-		enum {writeTimeout = 30};
-		enum {readTimeout = 30};
+	public:		
 
 		enum ConnectionState_t
 		{

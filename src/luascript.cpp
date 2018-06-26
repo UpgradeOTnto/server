@@ -20,6 +20,7 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/any.hpp>
+#include <boost/range/adaptor/reversed.hpp>
 #include <iostream>
 #include <iomanip>
 
@@ -716,7 +717,7 @@ bool LuaScriptInterface::loadDirectory(const std::string& dir, Npc* npc/* = NULL
 	StringVec files;
 	for(boost::filesystem::directory_iterator it(dir), end; it != end; ++it)
 	{
-		std::string s = it->leaf();
+		std::string s = it->path().filename().string();
 		if(!boost::filesystem::is_directory(it->status()) && (s.size() > 4 ? s.substr(s.size() - 4) : "") == ".lua")
 			files.push_back(s);
 	}
@@ -865,39 +866,98 @@ bool LuaScriptInterface::closeState()
 
 void LuaScriptInterface::executeTimer(uint32_t eventIndex)
 {
-	LuaTimerEvents::iterator it = m_timerEvents.find(eventIndex);
-	if(it != m_timerEvents.end())
-	{
-		//push function
-		lua_rawgeti(m_luaState, LUA_REGISTRYINDEX, it->second.function);
+	auto it = m_timerEvents.find(eventIndex);
+	if (it == m_timerEvents.end()) {
+		return;
+	}
 
-		//push parameters
-		for(std::list<int32_t>::reverse_iterator rt = it->second.parameters.rbegin(); rt != it->second.parameters.rend(); ++rt)
-			lua_rawgeti(m_luaState, LUA_REGISTRYINDEX, *rt);
+	LuaTimerEvent timerEventDesc = std::move(it->second);
+	m_timerEvents.erase(it);
 
-		//call the function
-		if(reserveEnv())
-		{
-			ScriptEnviroment* env = getEnv();
-			env->setTimerEvent();
-			env->setScriptId(it->second.scriptId, this);
+	//push function
+	lua_rawgeti(m_luaState, LUA_REGISTRYINDEX, timerEventDesc.function);
 
-			callFunction(it->second.parameters.size());
-			releaseEnv();
-		}
-		else
-			std::cout << "[Error] Call stack overflow. LuaScriptInterface::executeTimer" << std::endl;
+	//push parameters
+	for (auto parameter : boost::adaptors::reverse(timerEventDesc.parameters)) {
+		lua_rawgeti(m_luaState, LUA_REGISTRYINDEX, parameter);
+	}
 
-		//free resources
-		for(std::list<int32_t>::iterator lt = it->second.parameters.begin(); lt != it->second.parameters.end(); ++lt)
-			luaL_unref(m_luaState, LUA_REGISTRYINDEX, *lt);
+	//call the function
+	if (reserveEnv()) {
+		ScriptEnviroment* env = getEnv();
+		env->setTimerEvent();
+		env->setScriptId(timerEventDesc.scriptId, this);
+		callFunction(timerEventDesc.parameters.size());
+	} else {
+		std::cout << "[Error - LuaScriptInterface::executeTimerEvent] Call stack overflow" << std::endl;
+	}
 
-		it->second.parameters.clear();
-		luaL_unref(m_luaState, LUA_REGISTRYINDEX, it->second.function);
-		m_timerEvents.erase(it);
+	//free resources
+	luaL_unref(m_luaState, LUA_REGISTRYINDEX, timerEventDesc.function);
+	for (auto parameter : timerEventDesc.parameters) {
+		luaL_unref(m_luaState, LUA_REGISTRYINDEX, parameter);
 	}
 }
 
+std::string LuaScriptInterface::getString(lua_State* L, int32_t arg)
+{
+	size_t len;
+	const char* c_str = lua_tolstring(L, arg, &len);
+	if (!c_str || len == 0) {
+		return std::string();
+	}
+	return std::string(c_str, len);
+}
+
+std::string LuaScriptInterface::getStackTrace(const std::string& error_desc)
+{
+	lua_getglobal(m_luaState, "debug");
+	if (!lua_istable(m_luaState, -1)) {
+		lua_pop(m_luaState, 1);
+		return error_desc;
+	}
+
+	lua_getfield(m_luaState, -1, "traceback");
+	if (!lua_isfunction(m_luaState, -1)) {
+		lua_pop(m_luaState, 2);
+		return error_desc;
+	}
+
+	lua_replace(m_luaState, -2);
+	lua_pushlstring(m_luaState, error_desc.c_str(), error_desc.length());
+	lua_call(m_luaState, 1, 1);
+	return popString(m_luaState);
+}
+
+int LuaScriptInterface::luaErrorHandler(lua_State* L)
+{
+	const std::string& errorMessage = popString(L);
+	auto interface = getEnv()->getInterface();
+	assert(interface); //This fires if the ScriptEnvironment hasn't been setup
+	lua_pushstring(L, interface->getStackTrace(errorMessage).c_str());
+	return 1;
+}
+
+bool LuaScriptInterface::callFunction(uint32_t params)
+{
+	bool result = false;
+	uint32_t size = lua_gettop(m_luaState);
+	if (protectedCall(m_luaState, params, 1) != 0) {
+		LuaScriptInterface::error(nullptr, LuaScriptInterface::getString(m_luaState, -1));
+	} else {
+		result = lua_toboolean(m_luaState, -1) != 0;
+	}
+
+	lua_pop(m_luaState, 1);
+	if ((lua_gettop(m_luaState) + params + 1) != size) {
+		LuaScriptInterface::error(nullptr, "Stack size changed!");
+	}
+
+	releaseEnv();
+	return result;
+}
+
+/*
 int32_t LuaScriptInterface::handleFunction(lua_State* L)
 {
 	lua_getfield(L, LUA_GLOBALSINDEX, "debug");
@@ -920,7 +980,7 @@ int32_t LuaScriptInterface::handleFunction(lua_State* L)
 	lua_call(L, 2, 1);
 	return 1;
 }
-
+/
 bool LuaScriptInterface::callFunction(uint32_t params)
 {
 	int32_t size = lua_gettop(m_luaState), handler = lua_gettop(m_luaState) - params;
@@ -939,7 +999,7 @@ bool LuaScriptInterface::callFunction(uint32_t params)
 
 	return result;
 }
-
+*/
 void LuaScriptInterface::dumpStack(lua_State* L/* = NULL*/)
 {
 	if(!L)
@@ -1193,6 +1253,18 @@ void LuaScriptInterface::setFieldFloat(lua_State* L, const char* index, double v
 	pushTable(L);
 }
 
+/// Same as lua_pcall, but adds stack trace to error strings in called function.
+int LuaScriptInterface::protectedCall(lua_State* L, int nargs, int nresults)
+{
+	int error_index = lua_gettop(L) - nargs;
+	lua_pushcfunction(L, luaErrorHandler);
+	lua_insert(L, error_index);
+
+	int ret = lua_pcall(L, nargs, nresults, error_index);
+	lua_remove(L, error_index);
+	return ret;
+}
+
 void LuaScriptInterface::createTable(lua_State* L, const char* index)
 {
 	lua_pushstring(L, index);
@@ -1271,7 +1343,7 @@ std::string LuaScriptInterface::getGlobalString(lua_State* L, const std::string&
 		return _default;
 	}
 
-	int32_t len = (int32_t)lua_strlen(L, -1);
+	int32_t len = (int32_t)lua_rawlen(L, -1);
 	std::string ret(lua_tostring(L, -1), len);
 
 	lua_pop(L, 1);

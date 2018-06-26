@@ -17,6 +17,7 @@
 
 #ifndef __CONFIG_MANAGER__
 #define __CONFIG_MANAGER__
+//#include "lua.hpp"
 #include "luascript.h"
 
 class ConfigManager
@@ -46,9 +47,9 @@ class ConfigManager
 			SQL_PASS,
 			SQL_DB,
 			DEFAULT_PRIORITY,
-			#ifdef MULTI_SQL_DRIVERS
+			//#ifdef MULTI_SQL_DRIVERS
 			SQL_TYPE,
-			#endif
+			//#endif
 			SQL_FILE,
 			ENCRYPTION_TYPE,
 			MAP_AUTHOR,
@@ -279,6 +280,7 @@ class ConfigManager
 		void getValue(const std::string& key, lua_State* _L) {LuaScriptInterface::getValue(key, L, _L);}
 
 	private:
+	/*
 		std::string getGlobalString(const std::string& _identifier, const std::string& _default = "")
 		{
 			return LuaScriptInterface::getGlobalString(L, _identifier, _default);
@@ -296,10 +298,10 @@ class ConfigManager
 			return LuaScriptInterface::getGlobalDouble(L, _identifier, _default);
 		}
 
-		bool m_loaded, m_startup;
-		lua_State* L;
 		static void moveValue(lua_State* fromL, lua_State* toL);
-
+		*/
+		lua_State* L;
+		bool m_loaded, m_startup;
 		std::string m_confString[LAST_STRING_CONFIG];
 		bool m_confBool[LAST_BOOL_CONFIG];
 		int32_t m_confNumber[LAST_NUMBER_CONFIG];

@@ -759,12 +759,12 @@ Item* Admin::createMail(const std::string xmlData, std::string& name, uint32_t& 
 	{
 		Town* town = Towns::getInstance()->getTown(strValue);
 		if(!town)
-			return false;
+			return NULL;
 
 		depotId = town->getID();
 	}
 	else if(!IOLoginData::getInstance()->getDefaultTownByName(name, depotId)) //use the players default town
-		return false;
+		return NULL;
 
 	if(readXMLInteger(root, "id", intValue))
 		itemId = intValue;

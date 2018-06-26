@@ -526,7 +526,7 @@ ServiceManager* services)
 		g_config.setNumber(ConfigManager::ENCRYPTION, ENCRYPTION_PLAIN);
 		std::cout << "> Using plaintext encryption" << std::endl;
 	}
-	
+	/*
 	std::cout << ">> Checking software version... ";
 	#if defined(WINDOWS) && !defined(__CONSOLE__)
 	SendMessage(GUI::getInstance()->m_statusBar, WM_SETTEXT, 0, (LPARAM)">> Checking software version");
@@ -604,7 +604,7 @@ ServiceManager* services)
 		#endif
 			startupErrorMessage("Unable to fetch blacklist!");
 	}
-
+*/
 	std::cout << ">> Loading RSA key" << std::endl;
 	#if defined(WINDOWS) && !defined(__CONSOLE__)
 	SendMessage(GUI::getInstance()->m_statusBar, WM_SETTEXT, 0, (LPARAM)">> Loading RSA Key");
