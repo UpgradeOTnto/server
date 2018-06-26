@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Elite Anbu" nameDescription="a elite anbu" race="blood" experience="15000" speed="360" manacost="0">
+	<health now="15000" max="15000"/>
+	<look type="273" corpse="2946"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="300"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-280" max="-460"/>
+		<attack name="speed" interval="1000" chance="17" range="7" radius="4" target="1" speedchange="-600" duration="15000">
+			<attribute key="shootEffect" value="poison"/>
+			<attribute key="areaEffect" value="greenbubble"/>
+		</attack>
+		<attack name="physical" interval="3000" chance="17" length="8" spread="3" min="-350" max="-550">
+			<attribute key="areaEffect" value="bluebubble"/>
+		</attack>
+		<attack name="poison" interval="2000" chance="20" length="8" spread="3" min="-360" max="-600">
+			<attribute key="areaEffect" value="poison"/>
+		</attack>
+	</attacks>
+	<defenses armor="25" defense="35">
+		<defense name="healing" interval="1000" chance="25" min="500" max="800">
+			<attribute key="areaEffect" value="blueshimmer"/>
+		</defense>
+	</defenses>
+	<elements>
+		<element physicalPercent="-15"/>
+		<element energyPercent="-10"/>
+	</elements>
+	<immunities>
+		<immunity lifedrain="1"/>
+		<immunity paralyze="1"/>
+		<immunity invisible="1"/>
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="I am a defender of Konoha."/>
+		<voice sentence="I will kill you."/>
+	</voices>
+	<loot>
+		<item id="2160" countmax="3" chance="100000"/><!-- gold coin -->
+		<item id="11412" countmax="1" chance="7000"/><!-- speed boots -->
+		<item id="11398" countmax="1" chance="1200"/><!-- anbu armor -->
+		<item id="11408" countmax="1" chance="1400"/><!-- elite legs -->
+		<item id="2148" countmax="100" chance="100000"/><!-- gold coin -->
+	</loot>
+</monster>

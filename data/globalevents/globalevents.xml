@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<globalevents>
+	<globalevent name="save" interval="900" event="script" value="save.lua"/>
+	<globalevent name="clean" interval="7200" event="script" value="clean.lua"/>
+
+	<globalevent name="serverstart" type="start" event="script" value="start.lua"/>
+	<globalevent name="playersrecord" type="record" event="script" value="record.lua"/>
+
+	<globalevent name="shop" interval="30" script="shop.lua"/>
+	<globalevent name="texto" interval="3" script="textochao.lua"/>
+	<globalevent name="mensagem" interval="350" script="anuncio.lua"/>
+	<globalevent name="GlobalBattle" interval="60" event="script" value="BattleGlobalEvents.lua"/>
+</globalevents>

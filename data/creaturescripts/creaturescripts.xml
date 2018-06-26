@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<creaturescripts>
+	<event type="login" name="PlayerLogin" event="script" value="login.lua"/>
+
+	<event type="joinchannel" name="GuildMotd" event="script" value="guildmotd.lua"/>
+	<event type="receivemail" name="Mail" event="script" value="mail.lua"/>
+	<event type="reportbug" name="SaveReportBug" script="reportbug.lua"/>
+	<event type="advance" name="AdvanceSave" event="script" value="advancesave.lua"/>
+
+	<event type="login" name="AntiMc" event="script" value="antimc.lua"/> 
+	<event type="think" name="Idle" event="script" value="idle.lua"/>
+	<event type="think" name="SkullCheck" event="script" value="skullcheck.lua"/>
+
+	<event type="death" name="HeartDrop" event="script" value="heart.lua"/>
+	<event type="death" name="sasori" event="script" value="akatsuki/sasori.lua"/>
+	<event type="death" name="deidara" event="script" value="akatsuki/deidara.lua"/>
+	<event type="death" name="kisame" event="script" value="akatsuki/kisame.lua"/>
+	<event type="death" name="itachi" event="script" value="akatsuki/itachi.lua"/>
+	<event type="death" name="hidan" event="script" value="akatsuki/hidan.lua"/>
+	<event type="death" name="kakuzu" event="script" value="akatsuki/kakuzu.lua"/>
+	<event type="death" name="obito" event="script" value="madara/obito.lua"/>
+	<event type="death" name="madara" event="script" value="madara/madara.lua"/>
+	<event type="login" name="StaffLogin" event="script" value="login/adm.lua"/>
+
+	<event type="login" name="BattleLogin" event="script" value="BattleCreatureScript.lua"/>
+	<event type="PrepareDeath" name="BattleDeath" event="script" value="BattleCreatureScript.lua"/>
+	<event type="combat" name="BattleTeam" event="script" value="BattleCreatureScript.lua"/>
+</creaturescripts>

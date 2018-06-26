@@ -1,0 +1,5 @@
+7368 = Normal Shuriken
+7366 = Suna Shuriken
+2410 = Senbons
+7364 = Needle
+7838 = Explosion Kunai

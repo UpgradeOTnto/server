@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<monsters>
+	<!-- White -->
+	<monster name="Bee" file="White/bee.xml"/>
+	<monster name="Wolf" file="White/wolf.xml"/>
+	<monster name="Bandit" file="White/bandit.xml"/>
+	<monster name="Fire Shinobi" file="White/fire shinobi.xml"/>
+	<monster name="Samurai Warrior" file="White/samurai warrior.xml"/>
+	<monster name="Golden Spider" file="White/golden spider.xml"/>
+	<monster name="Anbu" file="White/anbu.xml"/>
+	<monster name="Gamaguren" file="White/gamaguren.xml"/>
+	<monster name="Oinin" file="White/oinin.xml"/>
+	<monster name="Elite Anbu" file="White/elite anbu.xml"/>
+	<monster name="Medinin" file="White/medinin.xml"/>
+	<monster name="False Zetsu" file="White/false zetsu.xml"/>
+	<monster name="Gamabunta" file="White/gamabunta.xml"/>
+	<monster name="Giant Insect" file="White/giant insect.xml"/>
+	<monster name="Insect" file="White/insect.xml"/>
+	<monster name="Black Shinobi" file="White/black shinobi.xml"/>
+
+	<!-- Akatsuki -->
+	<monster name="Sasori" file="White/sasori.xml"/>
+	<monster name="Deidara" file="White/deidara.xml"/>
+	<monster name="Kisame" file="White/kisame.xml"/>
+	<monster name="Itachi" file="White/itachi.xml"/> <!-- FODAO -->
+	<monster name="Nagato" file="White/nagato.xml"/>
+	<monster name="Hidan" file="White/hidan.xml"/>
+	<monster name="Kakuzu" file="White/kakuzu.xml"/>
+	<monster name="Obito" file="White/obito.xml"/>
+	<monster name="Madara" file="White/madara.xml"/>
+	<monster name="Event Zetsu" file="White/event zetsu.xml"/>
+	
+	<!-- Orochimaru Team -->
+	<monster name="Kabuto" file="White/kabuto.xml"/>
+	<monster name="Suigetsu" file="White/suigetsu.xml"/>
+	<monster name="Sasuke" file="White/sasuke.xml"/>
+	<monster name="Orochimaru" file="White/orochimaru.xml"/>
+	
+	<!-- Summons -->
+	<monster name="Bunshin" file="White/bunshin.xml"/>
+	<monster name="Mokuton Bunshin" file="White/mokuton bunshin.xml"/>
+	<monster name="Summon Gamabunta" file="White/summon gamabunta.xml"/>
+	<monster name="Summon Katsuyu" file="White/summon katsuyu.xml"/>
+	<monster name="Edo Tensei Anbu" file="White/edo tensei anbu.xml"/>
+	<monster name="Edo Tensei Itachi" file="White/edo tensei itachi.xml"/>
+	<monster name="Summon Sasori" file="White/summon sasori.xml"/>
+	<monster name="Summon Karasu" file="White/summon karasu.xml"/>
+	<monster name="Summon Sanshouo" file="White/summon sanshouo.xml"/>
+	<monster name="Fuuton Mask" file="White/fuuton.xml"/>
+	<monster name="Raiton Mask" file="White/raiton.xml"/>
+	<monster name="Katon Mask" file="White/katon.xml"/>
+</monsters>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="[VIP] Vocations" script="voca.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="761" head="17" body="54" legs="114" feet="0" addons="2"/>
+    <parameters>
+		<parameter key="message_greet" value="Oi |PLAYERNAME|. eu troco Premium Points pela vocation {minato}, {hashirama}, {tobirama}, {tsunade} ou {madara}"/>
+    </parameters>
+</npc>

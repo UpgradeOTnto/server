@@ -1,0 +1,101 @@
+----- 02/09/2014 14:55:39 - [ADM] White (25.168.179.206) -----
+Comment: 
+Graphic Engine: OpenGL (1)
+Operating System: Windows Vista Family in BRA
+Processor: AMD Athlon II X3 455
+Video Card: NVIDIA GeForce GT 610
+Last Packet Types: 100 120 180 132 132 132 132 160 160 140
+Last Packet: 180 018 016 000 047 105 032 112 114 101 109 105 117 109 032 112
+Player Position: [1053,847,7]
+Player Name: [ADM] White (White)
+Player Action: 050 053 046 049 054 056 046 049 055 057 046 050 048 054 058 055 049 055 050
+Player.cpp 361: exception occurred, reason:
+Network.cpp 992: exception occurred (ErrorCode = 0), reason:
+Control.cpp 1330: exception occurred (Type = 100) (MainWindow = 2587392), reason:
+Communication.cpp 1640: exception occurred (PlayerX = 42144) (PlayerY = 42040), reason:
+Communication.cpp 1618: exception occurred (xmin = 0) (ymin = 0), reason:
+Communication.cpp 1597: exception occurred (Type = 16960) (OldType = 0), reason:
+Objects.cpp 280: exception occurred (Type = 16960) (Flag = 11), reason:
+Objects.cpp 277: assertion failed (Type = 16960) (ObjectProperties->high() = 10478), reason:
+In(Type,ObjectProperties->low(),ObjectProperties->high())
+Tue Sep 02 14:47:09 2014
+Debug Assertion 8.54 Objects.cpp 277
+
+----- 17/09/2014 12:21:04 - [ADM] Leko (127.0.0.1) -----
+Comment: 
+Graphic Engine: DirectX9 (2)
+Operating System: Windows Vista Family in BRA
+Processor: AMD Athlon II X3 455
+Video Card: NVIDIA GeForce GT 610
+Last Packet Types: 142 180 104 109 101 109 104 109 030 101
+Last Packet: 180 018 012 000 047 110 101 119 116 121 112 101 032 056 051 055
+Player Position: [1019,941,7]
+Player Name: [ADM] Leko (Sennin)
+Player Action: 049 050 055 046 048 046 048 046 049 058 055 049 055 050
+Player.cpp 361: exception occurred, reason:
+Player.cpp 465: exception occurred, reason:
+Control.cpp 1720: exception occurred (MessageType: 0 MaW: F57AF0 MoW: 0), reason:
+Control.cpp 1715: exception occurred, reason:
+Control.cpp 386: exception occurred (Force?1:0 = 0), reason:
+MainWindow.cpp 138: exception occurred (Surface = 1), reason:
+GUI.cpp 1479: exception occurred (Surface = 1), reason:
+MapWindow.cpp 869: exception occurred (Surface = 1), reason:
+MapWindow.cpp 549: exception occurred (Obj = 4515), reason:
+MapWindow.cpp 1146: exception occurred (posx = 192) (posy = 128), reason:
+MapWindow.cpp 973: exception occurred, reason:
+MapWindow.cpp 957: exception occurred (Creature->OutfitType = 837) (Creature->CreatureID = 268438302), reason:
+Objects.cpp 494: exception occurred (Number = 837) (Flag = 25), reason:
+Container.h 226: index out of range (original i: 837, i: 836, min: 1, d: 836)
+Wed Sep 17 12:02:37 2014
+Debug Assertion 8.54 Container.h 226
+
+----- 21/09/2014 18:51:10 - Balzer (127.0.0.1) -----
+Comment: 
+Graphic Engine: DirectX9 (2)
+Operating System: Windows Vista Family in BRA
+Processor: AMD Athlon II X3 455
+Video Card: NVIDIA GeForce GT 610
+Last Packet Types: 109 131 131 140 140 140 140 140 140 131
+Last Packet: 109 143 003 063 003 007 002 143 003 064 003 007 107 145 003 066
+Player Position: [905,832,7]
+Player Name: [ADM] Leko (Sennin)
+Player Action: 054 057 046 049 054 050 046 057 052 046 050 051 052 058 055 049 055 050
+Player.cpp 361: exception occurred, reason:
+Network.cpp 992: exception occurred (ErrorCode = 0), reason:
+Control.cpp 1330: exception occurred (Type = 109) (MainWindow = 14464584), reason:
+Communication.cpp 2110: exception occurred, reason:
+Communication.cpp 2101: MoveCreature has been received for a coordinate where there is no creature anymore [bug0000017] (1288, 0), reason:
+ sx: 14 sy: 5 sz: 0
+ Position: 2
+ zx: 14 zy: 6 zz: 0
+ dx: 0 dy: 1 dz: 0
+ abs_sx: 911 abs_sy: 831 abs_sz: 7
+ abs_zx: 911 abs_zy: 832 abs_zz: 7
+ Start Cylinder (1):  (410,0) (5771,0) (1288,0) (99,268511051)
+ Start Cylinder (2):  (410,0) (5771,0) (1288,0) (99,268511051)(-)(-)(-)(-)(-)(-)
+ Destination Cylinder (1):  (459,0)
+ Destination Cylinder (2):  (459,0)(-)(-)(-)(-)(-)(-)(-)(-)(-)
+Sun Sep 21 18:12:05 2014
+Debug Assertion 8.54 Communication.cpp 2101
+
+----- 04/10/2014 19:27:31 - [GoD] b33ny (192.168.1.101) -----
+Comment: 
+Graphic Engine: OpenGL (1)
+Operating System: Windows 7 Ultimate Edition 64 Bit in BRA
+Processor: AMD Phenom II X4 965
+Video Card: NVIDIA GeForce 8600 GTS
+Last Packet Types: 110 109 180 132 132 132 132 132 132 132
+Last Packet: 110 000 037 011 003 000 098 097 103 008 000 020 169 025 100 169
+Player Position: [1024,909,7]
+Player Name: [GoD] b33ny (White)
+Player Action: 049 057 050 046 049 054 056 046 049 046 049 048 049 058 055 049 055 050
+Player.cpp 361: exception occurred, reason:
+Network.cpp 992: exception occurred (ErrorCode = 0), reason:
+Control.cpp 1330: exception occurred (Type = 110) (MainWindow = 40238592), reason:
+Communication.cpp 2136: exception occurred (Container = 0), reason:
+Objects.cpp 280: exception occurred (Type = 24587) (Flag = 11), reason:
+Objects.cpp 277: assertion failed (Type = 24587) (ObjectProperties->high() = 10478), reason:
+In(Type,ObjectProperties->low(),ObjectProperties->high())
+Sat Oct 04 19:26:57 2014
+Debug Assertion 8.54 Objects.cpp 277
+

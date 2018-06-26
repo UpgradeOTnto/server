@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<houses>
+  <house name="Mist Gakure #1" houseid="44" entryx="1017" entryy="1078" entryz="7" rent="250000" townid="3" size="92"/>
+  <house name="Mist Gakure #2" houseid="45" entryx="1017" entryy="1072" entryz="7" rent="250000" townid="3" size="87"/>
+  <house name="Mist Gakure #3" houseid="46" entryx="1017" entryy="1066" entryz="7" rent="250000" townid="3" size="93"/>
+  <house name="Mist Gakure #4" houseid="66" entryx="1035" entryy="1092" entryz="7" rent="250000" townid="3" size="16"/>
+  <house name="Mist Gakure #5" houseid="67" entryx="1040" entryy="1092" entryz="7" rent="250000" townid="3" size="20"/>
+  <house name="Mist Gakuse #6" houseid="68" entryx="1035" entryy="1092" entryz="6" rent="250000" townid="3" size="16"/>
+  <house name="Mist Gakuse #7" houseid="69" entryx="1035" entryy="1087" entryz="6" rent="250000" townid="3" size="16"/>
+  <house name="Mist Gakuse #8" houseid="70" entryx="1038" entryy="1087" entryz="6" rent="250000" townid="3" size="25"/>
+  <house name="Mist Gakuse #9" houseid="71" entryx="1038" entryy="1093" entryz="6" rent="250000" townid="3" size="20"/>
+</houses>

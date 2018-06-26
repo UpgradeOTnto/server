@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<monster name="Fire Shinobi" nameDescription="a fire shinobi" race="blood" experience="2000" speed="180" manacost="0">
+	<health now="100" max="100"/>
+	<look type="201" corpse="2946"/>
+	<targetchange interval="5000" chance="8"/>
+	<strategy attack="100" defense="0"/>
+	<flags>
+		<flag summonable="0"/>
+		<flag attackable="1"/>
+		<flag hostile="1"/>
+		<flag illusionable="1"/>
+		<flag convinceable="0"/>
+		<flag pushable="0"/>
+		<flag canpushitems="1"/>
+		<flag canpushcreatures="1"/>
+		<flag targetdistance="1"/>
+		<flag staticattack="90"/>
+		<flag runonhealth="300"/>
+	</flags>
+	<attacks>
+		<attack name="melee" interval="2000" min="-10" max="-120"/>
+		<attack name="fire" interval="2000" chance="15" range="7" radius="4" target="1" min="-60" max="-110">
+			<attribute key="shootEffect" value="fire"/>
+			<attribute key="areaEffect" value="firearea"/>
+		</attack>
+		<attack name="fire" interval="3000" chance="8" length="8" spread="3" min="-90" max="-170">
+			<attribute key="areaEffect" value="firearea"/>
+		</attack>
+	</attacks>
+	<defenses armor="0" defense="0">
+		<defense name="healing" interval="1000" chance="20" min="200" max="400">
+			<attribute key="areaEffect" value="blueshimmer"/>
+		</defense>
+	</defenses>
+	<elements>
+		<element energyPercent="20"/>
+	</elements>
+	<immunities>
+		<immunity paralyze="1"/>
+		<immunity invisible="1"/>
+	</immunities>
+	<voices interval="5000" chance="10">
+		<voice sentence="Fire Style" yell="1"/>
+		<voice sentence="Katon no Jutsu !!!" yell="1"/>
+	</voices>
+	<loot>
+		<item id="11412" countmax="1" chance="3500"/><!-- speed boots -->
+		<item id="11399" countmax="1" chance="3000"/><!-- chakra armor -->
+		<item id="11434" countmax="1" chance="7000"/><!-- elite taijutsu gloves -->
+		<item id="11441" countmax="1" chance="5000"/><!-- elite kunai -->
+	</loot>
+</monster>

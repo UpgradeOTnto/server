@@ -1,0 +1,8 @@
+-- ACTIONS
+4000 a 4500 - Quest Bobas
+
+-- ACTIONS
+5000 a 5010 - Akatsuki
+
+-- ACTIONS
+7000 a 7010 - Ranks

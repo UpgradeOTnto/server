@@ -1,0 +1,56 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mod name = "Military Ranks" version = "1.0" author = "Teckman" enabled = "yes">
+  <config name = "ranks"><![CDATA[
+   titles = {
+    [5] = "Novice Killer",
+    [10] = "Killer",
+    [15] = "Advanced Killer",
+    [20] = "Killer Sought",
+    [25] = "Elite Killer",
+    [30] = "Almost Renegade",
+    [35] = "Renegade",
+    [40] = "Akatsuki Novice",
+    [45] = "Akatsuki Menber",
+    [50] = "Akatsuki Assasin",
+    [55] = "Akatsuki Scout",
+    [100] = "Akatsuki Leader",
+   }
+   fragsStorage = 600
+  ]]></config>
+  <event type = "look" name = "ranksLook" event = "script"><![CDATA[
+   domodlib("ranks")
+   function onLook(cid, thing, position, lookDistance)
+    if(isPlayer(thing.uid)) then
+	 local rank = {rank = "Private", frags = 0}
+	 for k, v in pairs(titles) do
+	  if(math.max(0, getPlayerStorageValue(thing.uid, fragsStorage)) > k - 1) then
+	   if(k - 1 > rank.frags) then
+	    rank.rank, rank.frags = v, k - 1
+	   end
+	  end
+	 end
+	 doPlayerSetSpecialDescription(thing.uid, "\n Killer Rank: " .. rank.rank)
+    end
+    return true
+   end
+  ]]></event>
+  <event type = "kill" name = "ranksKill" event = "script"><![CDATA[
+   domodlib("ranks")
+   function onKill(cid, target)
+    if(isPlayer(target)) then
+	 setPlayerStorageValue(cid, fragsStorage, math.max(0, getPlayerStorageValue(cid, fragsStorage) + 1))
+	 if(titles[getPlayerStorageValue(cid, fragsStorage)]) then
+	  doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "You advanced to military rank: " .. titles[getPlayerStorageValue(cid, fragsStorage)] .. ". Congratulations " .. titles[getPlayerStorageValue(cid, fragsStorage)] .. "!")
+	 end
+    end
+    return true
+   end
+  ]]></event>
+  <event type = "login" name = "ranksLogin" event = "script"><![CDATA[
+   function onLogin(cid)
+    registerCreatureEvent(cid, "ranksKill")
+    registerCreatureEvent(cid, "ranksLook")
+    return true
+   end
+  ]]></event>
+</mod>

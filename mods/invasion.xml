@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<mod name="Automatic Raids" version="1.0" author="Vodkart And xotservx" contact="xtibia.com" enabled="yes">  
+<config name="raids_func"><![CDATA[
+days = {
+["Saturday"] = {
+["10:30"] = {nome = "Event Zetsu", pos = {fromPosition = {x=993, y=892, z=7},toPosition = {x=1069, y=925, z=7}},m = {"100 Event Zetsu", "5 False Zetsu"}, Time = 15},
+["20:30"] = {nome = "False Zetsu", pos = {fromPosition = {x=993, y=892, z=7},toPosition = {x=1069, y=925, z=7}},m = {"25 False Zetsu"}, Time = 15}
+},
+["Sunday"] = {
+["15:30"] = {nome = "Event Zetsu", pos = {fromPosition = {x=993, y=892, z=7},toPosition = {x=1069, y=925, z=7}},m = {"150 Event Zetsu", "5 False Zetsu"}, Time = 15},
+["21:30"] = {nome = "False Zetsu", pos = {fromPosition = {x=993, y=892, z=7},toPosition = {x=1069, y=925, z=7}},m = {"50 False Zetsu"}, Time = 15}
+}
+}
+]]></config>    
+<globalevent name="AutomaticRaids" interval="60" event="script"><![CDATA[
+domodlib('raids_func')
+function onThink(interval, lastExecution)  
+if days[os.date("%A")] then
+hours = tostring(os.date("%X")):sub(1, 5)       
+tb = days[os.date("%A")][hours] 
+if tb then        
+function removeCreature(tb)
+for x = ((tb.pos.fromPosition.x)-10), ((tb.pos.toPosition.x)+10) do
+for y = ((tb.pos.fromPosition.y)-10), ((tb.pos.toPosition.y)+10) do
+local m = getTopCreature({x=x, y=y, z= tb.pos.fromPosition.z}).uid
+if m ~= 0 and isMonster(m) then
+doRemoveCreature(m)
+end
+end
+end
+end
+doBroadcastMessage("The invasion of " .. tb.nome .. " started")
+for _,x in pairs(tb.m) do
+for s = 1, tonumber(x:match("%d+")) do
+pos = {x = math.random(tb.pos.fromPosition.x, tb.pos.toPosition.x), y = math.random(tb.pos.fromPosition.y, tb.pos.toPosition.y), z = tb.pos.fromPosition.z}
+doSummonCreature(x:match("%s(.+)"), pos)
+end
+end
+addEvent(removeCreature, tb.Time*60*1000, tb)
+end
+end
+return true
+end
+]]></globalevent>
+</mod>

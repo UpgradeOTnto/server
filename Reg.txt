@@ -1,0 +1,19 @@
+---------------------------- HELMET
+Bandana - 1s hp/chakra +1 all skill
+Suna hat - 1s hp/chakra +2 all skill
+Head Protector - 2s hp/chakra +3 all skill
+Anbu mask - 3s hp/chakra +5 all skill
+Elite Anbu mask - 5s hp/chakra +7 all skill
+Akatsuki hat - 5s hp/chakra +10 all skill
+
+---------------------------- ARMORS
+Gennin - 2s hp/chakra
+Chunnin - 4s hp/chakra
+Jounin - 6s hp/chakra
+Anbu - 10s hp/chakra
+Chakra Armor - 5s chakra
+Orochimaru Tunic - 8s hp/chakra
+Nidaime Tunic - 12s hp/chakra
+Akatsuki Tunic - 15s hp/chakra
+Madara Armor - 20s hp/chakra
+------------------------------ LEGS
